@@ -1,0 +1,15 @@
+This APK's developer addon contains a modified build of Dobby.
+
+Upstream: https://github.com/jmpews/Dobby
+Commit: e9fe7fbecae47a2287e761080f8b1133cc22e8fa
+License: Apache License 2.0 (see Dobby-LICENSE.txt in this directory).
+
+Local research project modifications, 2026-09-09:
+- external/logging/logging/logging.h: make the header-defined logger and its
+  Shared accessor inline C++ entities to avoid duplicate definitions.
+- source/InterceptEntry.cpp: explicitly initialize thumb_mode to false before
+  checking whether an ARM32 function address selects Thumb mode. The original
+  constructor left this flag uninitialized for ARM-mode targets.
+
+The reproducible modifications are implemented by tools/setup_hook.py in the
+research source. They are not an unmodified upstream Dobby release.
